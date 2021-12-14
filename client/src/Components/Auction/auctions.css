@@ -1,0 +1,9 @@
+.all-auctions {
+	margin-top: 50px;
+}
+
+.auction-card img {
+	height: 225px;
+	width: 100%;
+	display: block;
+}

@@ -1,0 +1,45 @@
+.form-signin,
+.form-signup {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 150px;
+}
+
+.form-signin .form-control,
+.form-signup .form-control {
+	position: relative;
+	box-sizing: border-box;
+	height: auto;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-signin input,
+.form-signup input {
+	margin-bottom: 10px;
+}
+
+.form-signin .btn,
+.form-signup .btn {
+	width: 100%;
+	display: block;
+	position: relative;
+	top: 18px;
+}
+
+.form-signup {
+	border-radius: 0 !important;
+}
+
+.form-signup {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.form-signup .row .col:nth-child(1) {
+    padding-right: 0;
+}
