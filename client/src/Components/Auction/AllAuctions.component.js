@@ -50,7 +50,7 @@ const AllAuctions = () => {
 	return (
 		<div className="all-auctions">
 			<h3>All Auctions</h3>
-			<p>Hello {user.firstName}</p>
+			<p>Hello {user?.firstName}</p>
 			<div className="row">
 				{auctions.map((auction, k) => (
 					<AuctionCard auction={auction} key={auction?._id} />
