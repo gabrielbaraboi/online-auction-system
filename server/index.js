@@ -12,15 +12,9 @@ const listener = app.listen(7055, function(){
     console.log('Listening on port ' + listener.address().port);
 });
 
-// //Routes require
 const authenticantion = require("./routes/userRoutes");
 const { log } = require("console");
-// const posts = require("./routes/postRoutes");
-// const comments = require("./routes/commentRoutes");
-// const messages = require("./routes/messagesRoutes");
-// const profile = require("./routes/profileRoutes");
 
-// //config bodyParser & express
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(
@@ -32,10 +26,5 @@ app.use(
 app.use(cookieParser());
 
 app.use("/auth", authenticantion);
-// app.use("/posts", posts);
-// app.use("/comments", comments);
-// app.use("/inbox", messages);
-// app.use("/profile", profile);
-// // app.use('/user', userRoutes);
 
 module.exports = app;

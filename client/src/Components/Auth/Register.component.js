@@ -67,9 +67,7 @@ const Register = ({ onSubmit, authError }) => {
 				</div>
 				<input
 					type="email"
-					className={`form-control ${
-						errors.email && "is-danger"
-					}`}
+					className={`form-control ${errors.email && "is-danger"}`}
 					placeholder="Email address"
 					required="required"
 					name="email"
@@ -81,9 +79,7 @@ const Register = ({ onSubmit, authError }) => {
 				)}
 				<input
 					type="password"
-					className={`form-control ${
-						errors.password && "is-danger"
-					}`}
+					className={`form-control ${errors.password && "is-danger"}`}
 					placeholder="Password"
 					required="requied"
 					name="password"
@@ -96,7 +92,7 @@ const Register = ({ onSubmit, authError }) => {
 				<input
 					type="password"
 					className={`form-control ${
-						errors.confirmPassword  && "is-danger"
+						errors.confirmPassword && "is-danger"
 					}`}
 					placeholder="Confirm Password"
 					required="required"
@@ -107,11 +103,13 @@ const Register = ({ onSubmit, authError }) => {
 				{errors.confirmPassword && (
 					<p className="help is-danger">{errors.confirmPassword}</p>
 				)}
+				{authError && <p className="help is-danger">{authError}</p>}
 				<button className="btn btn-lg btn-primary" type="submit">
 					Sign Up
 				</button>
-				<p className="help is-danger">{authError}</p>
-				<p className="mt-5 mb-3 text-muted">© 2021</p>
+				<p className="mt-5 mb-3 text-muted">
+					© {new Date().getFullYear()}
+				</p>{" "}
 			</form>
 		</div>
 	);
@@ -119,15 +117,15 @@ const Register = ({ onSubmit, authError }) => {
 
 export default () => {
 	const [authError, setAuthError] = useState(false);
-	const history = useNavigate();
+	const navigate = useNavigate();
 
 	const handleSubmit = async (data) => {
 		register(data)
 			.then(() => {
-				history.push("/signin");
+				navigate("/signin");
 			})
 			.catch((err) => {
-				// setAuthError(err.response.data.message);
+				setAuthError(err.response.data.message);
 			});
 	};
 

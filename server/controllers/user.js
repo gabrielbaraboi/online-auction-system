@@ -12,8 +12,7 @@ const registerUser = async (req, res) => {
 		}
 
 		if (await isEmailAlreadyUsed(email))
-			return res.status(409).send({ message: 'Something failed!' })
-			// return res.status(409).json({ message: "This email is taken!" });
+			return res.status(400).json({ message: "Email already used!" });
 
 		await User.create({
 			email: email.toLowerCase(),

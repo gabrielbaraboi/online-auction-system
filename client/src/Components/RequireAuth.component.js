@@ -4,7 +4,7 @@ import { isUserData } from "../Services/auth.service";
 
 const RequireAuth = ({ children, redirectTo }) => {
     let isAuthenticated = isUserData();
-    return !isAuthenticated ? children : <Navigate to={redirectTo} />;
+    return isAuthenticated ? children : <Navigate to={redirectTo} />;
 };
 
 export default RequireAuth;

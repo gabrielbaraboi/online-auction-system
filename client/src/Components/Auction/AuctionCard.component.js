@@ -13,8 +13,8 @@ const AuctionCard = ({ auction }) => {
 					<div className="card-text">{auction?.description}</div>
 				</div>
 				<div className="card-footer">
-					<p class="card-text">
-						<small class="text-muted">
+					<p className="card-text">
+						<small className="text-muted">
 							Price: {auction?.price}
 						</small>
 					</p>

@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AuctionCard from "./AuctionCard.component";
-import {
-    logout,
-    getCurrentUser,
-    isUserData,
-} from "../../Services/auth.service";
 import "./auctions.css";
 
-const AllAuctions = () => {
+const AllAuctions = (props) => {
 	// const [auctions, setAuctions] = useState([]);
-	const [user, setUser] = useState({});
-
-    useEffect(() => {
-        const userData = getCurrentUser();
-        setUser(userData);
-    }, []);
+	const user = props.user;
 
 	const auctions = [
 		{

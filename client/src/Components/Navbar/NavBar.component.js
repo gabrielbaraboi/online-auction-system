@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { isUserData, logout } from "../../Services/auth.service";
 
-const NavBar = () => {
+const NavBar = (props) => {
+	const user = props.user;
+
+	console.log(isUserData());
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div className="container">
@@ -15,21 +20,39 @@ const NavBar = () => {
 								Home
 							</Link>
 						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to={"/new"}>
-								New Auction
-							</Link>
-						</li>
-                        <li className="nav-item">
-							<Link className="nav-link" to={'/signin'}>
-								Sign In
-							</Link>
-						</li>
-                        <li className="nav-item">
-							<Link className="nav-link" to={"/signup"}>
-								Sign Up
-							</Link>
-						</li>
+						{isUserData() ? (
+							<li className="nav-item">
+								<Link className="nav-link" to={"/new"}>
+									New Auction
+								</Link>
+							</li>
+						) : null}
+						{isUserData() ? (
+							<li className="nav-item">
+								<Link
+									className="nav-link"
+									to={"/"}
+									onClick={logout}
+								>
+									Logout
+								</Link>
+							</li>
+						) : null}
+						{!isUserData() ? (
+							<>
+								{" "}
+								<li className="nav-item">
+									<Link className="nav-link" to={"/signin"}>
+										Sign In
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to={"/signup"}>
+										Sign Up
+									</Link>
+								</li>
+							</>
+						) : null}
 					</ul>
 				</div>
 			</div>

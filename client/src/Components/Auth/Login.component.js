@@ -26,7 +26,7 @@ const Login = ({ onSubmit, authError }) => {
 				<input
 					type="email"
 					name="email"
-					onChange={handleChange} 
+					onChange={handleChange}
 					className={`form-control ${errors.email && "is-danger"}`}
 					placeholder="Email address"
 					value={values.email || ""}
@@ -37,7 +37,7 @@ const Login = ({ onSubmit, authError }) => {
 				<input
 					type="password"
 					name="password"
-					onChange={handleChange} 
+					onChange={handleChange}
 					className={`form-control ${errors.password && "is-danger"}`}
 					onChange={handleChange}
 					placeholder="Password"
@@ -46,29 +46,33 @@ const Login = ({ onSubmit, authError }) => {
 				{errors.password && (
 					<p className="help is-danger">{errors.password}</p>
 				)}
+				{authError && <p className="help is-danger">{authError}</p>}
 				<button className="btn btn-lg btn-primary" type="submit">
 					Sign in
 				</button>
-				<p className="mt-5 mb-3 text-muted">© 2021</p>
+
+				<p className="mt-5 mb-3 text-muted">
+					© {new Date().getFullYear()}
+				</p>
 			</form>
 		</div>
 	);
 };
 
 export default () => {
-    const [authError, setAuthError] = useState('');
-    const history = useNavigate();
+	const [authError, setAuthError] = useState("");
+	const navigate = useNavigate();
 
-    const handleSubmit = data => {
-        login(data)
-            .then(() => {
-                history.push("/");
-                window.location.reload();
-            })
-            .catch(err => {
-                // setAuthError(err.response.data.message)
-            });
-    };
+	const handleSubmit = (data) => {
+		login(data)
+			.then(() => {
+				navigate("/");
+				window.location.reload();
+			})
+			.catch((err) => {
+				setAuthError(err.response.data.message);
+			});
+	};
 
-    return <Login onSubmit={handleSubmit} authError={authError} />
+	return <Login onSubmit={handleSubmit} authError={authError} />;
 };
