@@ -4,8 +4,7 @@ const controller = require("../controllers/user");
 const auth = require("../middleware/auth");
 
 //REGISTER
-router.post("/register",controller.registerUser
-);
+router.post("/register", controller.registerUser);
 
 //LOGIN
 router.post("/login", controller.loginUser);

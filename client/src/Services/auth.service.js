@@ -56,7 +56,7 @@ const parseJwt = (token) => {
 	}
 };
 
-const AuthVerify = (props) => {
+const AuthVerify = () => {
 	const user = JSON.parse(localStorage.getItem("user"));
 
 	if (user) {

@@ -33,6 +33,8 @@ const loginUser = async (req, res) => {
 		let responseUser;
 		const { email, password } = req.body;
 
+		console.log(req.body);
+
 		if (!(email && password)) {
 			res.status(400).json({ message: "All inputs are required!" });
 		}
