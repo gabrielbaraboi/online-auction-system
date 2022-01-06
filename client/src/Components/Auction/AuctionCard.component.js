@@ -6,7 +6,7 @@ const AuctionCard = ({ auction }) => {
 		<div className="col-md-4">
 			<div className="card mb-4 box-shadow auction-card">
 				<div className="card-img-top">
-					<img src={auction?.image} alt={auction?.title} />
+					<img src="https://picsum.photos/200/300" alt={auction?.title} />
 				</div>
 				<div className="card-body">
 					<div className="card-title">{auction?.title}</div>
@@ -15,7 +15,7 @@ const AuctionCard = ({ auction }) => {
 				<div className="card-footer">
 					<p className="card-text">
 						<small className="text-muted">
-							Price: {auction?.price}
+							Price: {auction?.currentPrice}
 						</small>
 					</p>
 				</div>

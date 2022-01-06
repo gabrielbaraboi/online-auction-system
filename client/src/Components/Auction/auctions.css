@@ -7,3 +7,51 @@
 	width: 100%;
 	display: block;
 }
+
+.form-auction {
+	width: 100%;
+	max-width: 500px;
+	padding: 15px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 150px;
+}
+
+.form-auction .form-control {
+	position: relative;
+	box-sizing: border-box;
+	height: auto;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-auction input, .form-auction textarea {
+	margin-bottom: 10px;
+}
+
+.form-auction textarea {
+	height: 100px;
+	resize: none;
+}
+
+.form-auction .btn {
+	position: relative;
+	box-sizing: border-box;
+	height: auto;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 3px;
+	margin-top: 10px;
+	width: 100%;
+	display: block;
+}
+
+.form-auction {
+	border-radius: 0 !important;
+}
+
+.form-auction {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
