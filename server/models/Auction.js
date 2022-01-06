@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-var LotSchema = new mongoose.Schema({
-    name: { type: String, required: true, minlength: 5 },
+var AuctionSchema = new mongoose.Schema({
+    title: { type: String, required: true, minlength: 5 },
     description: { type: String, required: true, minlength: 10 },
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     startPrice: { type: Number, required: true },
@@ -17,4 +17,4 @@ var LotSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Lot', LotSchema);
+module.exports = mongoose.model('Auction', AuctionSchema);

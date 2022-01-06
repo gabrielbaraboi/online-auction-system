@@ -13,6 +13,7 @@ const listener = app.listen(7055, function(){
 });
 
 const authenticantion = require("./routes/userRoutes");
+const auction = require("./routes/auctionRoutes");
 const { log } = require("console");
 
 app.use(bodyParser.json());
@@ -26,5 +27,6 @@ app.use(
 app.use(cookieParser());
 
 app.use("/auth", authenticantion);
+app.use("/auction", auction);
 
 module.exports = app;
