@@ -29,6 +29,13 @@ const NavBar = (props) => {
 						) : null}
 						{isUserData() ? (
 							<li className="nav-item">
+								<Link className="nav-link" to={"/profile/" + user.id}>
+									Profile
+								</Link>
+							</li>
+						) : null}
+						{isUserData() ? (
+							<li className="nav-item">
 								<Link
 									className="nav-link"
 									to={"/"}

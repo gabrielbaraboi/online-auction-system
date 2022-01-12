@@ -3,9 +3,9 @@ import { useNavigate } from "react-router";
 import useForm from "../../Hooks/useForm";
 import AuctionValidationRules from "../../Services/Validation/AuctionValidationRules";
 import { createAuction } from "../../Services/auction.service";
-import Calendar from 'react-calendar';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./auctions.css";
-import 'react-calendar/dist/Calendar.css';
 
 const AddAuction = ({ onSubmit, auctionError }) => {
 	const { values, errors, handleChange, handleSubmit } = useForm(
@@ -17,9 +17,10 @@ const AddAuction = ({ onSubmit, auctionError }) => {
 		const data = {
 			title: values.title,
 			description: values.description,
-			startPrice: values.startPrice,
+			category: values.category,
+			price: values.price,
 			minStep: values.minStep,
-			endTime: values.endTime
+			endTime: values.endTime,
 		};
 		onSubmit(data);
 	}
@@ -54,18 +55,16 @@ const AddAuction = ({ onSubmit, auctionError }) => {
 				)}
 				<input
 					type="number"
-					name="startPrice"
+					name="price"
 					max="100000"
 					min="1"
 					onChange={handleChange}
-					className={`form-control ${
-						errors.startPrice && "is-danger"
-					}`}
+					className={`form-control ${errors.price && "is-danger"}`}
 					placeholder="Start Price"
-					value={values.startPrice || ""}
+					value={values.price || ""}
 				/>
-				{errors.startPrice && (
-					<p className="help is-danger">{errors.startPrice}</p>
+				{errors.price && (
+					<p className="help is-danger">{errors.price}</p>
 				)}
 				<textarea
 					type="text"
@@ -80,12 +79,32 @@ const AddAuction = ({ onSubmit, auctionError }) => {
 				{errors.description && (
 					<p className="help is-danger">{errors.description}</p>
 				)}
-				<input
-					type="date"
-					name="endTime"
+				<select
+					name="category"
 					onChange={handleChange}
-					className={`form-control ${errors.endTime && "is-danger"}`}
-					value={values.endTime || ""}
+					className={`form-control ${errors.category && "is-danger"}`}
+					value={values.category || ""}
+				>
+					<option value="">Select Category</option>
+					<option value="art">Art</option>
+					<option value="books">Books</option>
+					<option value="clothing">Clothing</option>
+					<option value="electronics">Electronics</option>
+					<option value="furniture">Furniture</option>
+					<option value="games">Games</option>
+					<option value="music">Music</option>
+					<option value="sports">Sports</option>
+				</select>
+				{errors.category && (
+					<p className="help is-danger">{errors.category}</p>
+				)}
+				<DatePicker
+					className="form-control"
+					placeholderText="End Time"
+					selected={values.endTime || ""}
+					onChange={date => handleChange({ target: { name: "endTime", value: date } })}
+					showTimeSelect
+					dateFormat="MMMM d, yyyy h:mm aa"
 				/>
 				{errors.endTime && (
 					<p className="help is-danger">{errors.endTime}</p>

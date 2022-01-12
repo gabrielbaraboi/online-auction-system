@@ -3,9 +3,14 @@ import { authHeader } from "./auth.service";
 
 const API_URL = "http://localhost:7055/auction";
 
-export const getAllAuctions = async () => {
+export const getAllAuctions = async (page, category) => {
 	try {
-		const res = await axios.get(API_URL + "/getAllAuctions");
+		const res = await axios.get(API_URL + "/getAllAuctions", {
+			params: {
+				page,
+				category,
+			},
+		});
 		return res;
 	} catch (error) {
 		throw error;
@@ -22,6 +27,7 @@ export const getAuctionById = async (id) => {
 };
 
 export const getAuctionsByUserId = async (id) => {
+	console.log(id);
 	try {
 		const res = await axios.get(API_URL + "/getAuctionsByUserId/" + id);
 		return res;
@@ -55,13 +61,24 @@ export const deleteAuctionById = async (id) => {
 
 export const updateAuctionById = async (id, data) => {
 	try {
-		const res = await axios.put(API_URL + "/updateAuctionById/" + id, data, {
+		const res = await axios.put(
+			API_URL + "/updateAuctionById/" + id,
+			data,
+			{
 				headers: authHeader(),
 			},
 		);
-		window.location.reload();
 		return res;
 	} catch (error) {
 		throw error;
 	}
 };
+
+export const getCategories = async () => {
+	try {
+		const res = await axios.get(API_URL + "/getCategories");
+		return res;
+	} catch (error) {
+		throw error;
+	}
+}

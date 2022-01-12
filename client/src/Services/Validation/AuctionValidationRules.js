@@ -19,10 +19,10 @@ export default function AuctionValidationRules(values) {
             "Description must be " + minDescriptionLength + " or more characters";
     }
 
-    if (!values.startPrice) {
-        errors.startPrice = "Start price is required";
-    } else if (values.startPrice < minStartPrice) {
-        errors.startPrice = "Start price must be " + minStartPrice + " or more";
+    if (!values.price) {
+        errors.price = "Start price is required";
+    } else if (values.price < minStartPrice) {
+        errors.price = "Start price must be " + minStartPrice + " or more";
     }
 
     if (!values.minStep) {
@@ -35,6 +35,10 @@ export default function AuctionValidationRules(values) {
         errors.endTime = "End time is required";
     } else if (new Date(values.endTime).getTime() < Date.now()) {
         errors.endTime = "End time must be in future";
+    }
+
+    if (!values.category) {
+        errors.category = "Category is required";
     }
 
     return errors;

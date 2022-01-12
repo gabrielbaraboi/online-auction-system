@@ -41,12 +41,9 @@ export const createBid = async (data) => {
 	}
 };
 
-export const deleteBidById = async (id) => {
+export const getLastBidByAuctionId = async (id) => {
 	try {
-		const res = await axios.delete(API_URL + "/deleteBidById/" + id, {
-			headers: authHeader(),
-		});
-		window.location.reload();
+		const res = await axios.get(API_URL + "/getLastBidByAuctionId/" + id);
 		return res;
 	} catch (error) {
 		throw error;
